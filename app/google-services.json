@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1008913621974",
+    "firebase_url": "https://my-project-1552214606351-default-rtdb.firebaseio.com",
+    "project_id": "my-project-1552214606351",
+    "storage_bucket": "my-project-1552214606351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008913621974:android:cf871fb52630729fbfba77",
+        "android_client_info": {
+          "package_name": "com.example.easyshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008913621974-gapc8ks74fadf6ib03ad2jqrt09isah2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRUSb1Uku7BWuw-fsEWT4C-k9-6Otjz2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008913621974-gapc8ks74fadf6ib03ad2jqrt09isah2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
