@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -39,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public MagasinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
                 return new MagasinViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull MagasinViewHolder holder, int position, @NonNull ModelMagasin model) {
-                    holder.list_name.setText(model.getName());
-                    holder.list_adress.setText(model.getAdress());
+                holder.list_name.setText(model.getName());
+                holder.list_adress.setText(model.getAdress());
             }
         };
         firestorelist.setHasFixedSize(true);
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        }
+    }
         private BottomNavigationView.OnNavigationItemSelectedListener navListener =
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
