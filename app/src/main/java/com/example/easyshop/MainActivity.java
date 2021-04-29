@@ -2,6 +2,7 @@ package com.example.easyshop;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +29,15 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView firestorelist;
     private FirestoreRecyclerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         firestorelist = findViewById(R.id.liste_firestore);
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -56,43 +64,72 @@ public class MainActivity extends AppCompatActivity {
         firestorelist.setLayoutManager(new LinearLayoutManager(this));
         firestorelist.setAdapter(adapter);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-
+        toolbar.setOnMenuItemClickListener(navListener);
     }
-        private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment selectedFragment = null;
 
-                        switch (item.getItemId()) {
-                            case R.id.nav_home:
-                                selectedFragment = new HomeFragment();
-                                break;
-                            case R.id.nav_premium:
-                                selectedFragment = new PremiumFragment();
-                                break;
-                            case R.id.nav_options:
-                                selectedFragment = new OptionFragment();
-                                break;
-                        }
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+    private Toolbar.OnMenuItemClickListener navListener =
+            new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Fragment selectedFragment = null;
 
-                        return true;
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            selectedFragment = new HomeFragment();
+                            break;
+                        case R.id.nav_premium:
+                            selectedFragment = new PremiumFragment();
+                            break;
+                        case R.id.nav_options:
+                            selectedFragment = new OptionFragment();
+                            break;
                     }
-                };
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
+                    return true;
+                }
+            };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.bottom_navigation, menu);
+        return true;
+    }
+    /*
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            selectedFragment = new HomeFragment();
+                            break;
+                        case R.id.nav_premium:
+                            selectedFragment = new PremiumFragment();
+                            break;
+                        case R.id.nav_options:
+                            selectedFragment = new OptionFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+                    return true;
+                }
+            };
+*/
 
     private class MagasinViewHolder extends RecyclerView.ViewHolder {
 
         private TextView list_name;
         private TextView list_adress;
+
         public MagasinViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.list_name);
-            list_adress=itemView.findViewById(R.id.list_adress);
+            list_name = itemView.findViewById(R.id.list_name);
+            list_adress = itemView.findViewById(R.id.list_adress);
         }
     }
 
