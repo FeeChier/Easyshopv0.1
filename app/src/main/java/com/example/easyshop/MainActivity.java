@@ -17,7 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -38,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         firestorelist = findViewById(R.id.liste_firestore);
         firebaseFirestore = FirebaseFirestore.getInstance();
+        ImageButton logoButton = findViewById(R.id.logoButton);
 
         Query query = firebaseFirestore.collection("Magasins");
         FirestoreRecyclerOptions<ModelMagasin> options = new FirestoreRecyclerOptions.Builder<ModelMagasin>()
@@ -65,8 +68,13 @@ public class MainActivity extends AppCompatActivity {
         firestorelist.setAdapter(adapter);
 
         toolbar.setOnMenuItemClickListener(navListener);
+        logoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"ImageButton is clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
     private Toolbar.OnMenuItemClickListener navListener =
             new Toolbar.OnMenuItemClickListener() {
                 @Override

@@ -3,9 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <ImageButton
+        android:id="@+id/logoButton"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:scaleType="fitCenter"
+        android:background="@color/black"
+        app:srcCompat="@drawable/logo" />
+
 
 </androidx.appcompat.widget.Toolbar>
