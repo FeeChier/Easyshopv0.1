@@ -40,6 +40,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements FirestoreAdapter.OnListItemClick, View.OnClickListener{
     private FirebaseFirestore firebaseFirestore;
 
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements FirestoreAdapter.
     private ImageButton btt;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements FirestoreAdapter.
 
         btt = (ImageButton) findViewById(R.id.connexionButton);
         btt.setOnClickListener(this);
+
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -152,5 +154,6 @@ public class MainActivity extends AppCompatActivity implements FirestoreAdapter.
                 startActivity(new Intent(this, MainActivity2.class));
                 break;
         }
+
     }
 }
